@@ -133,3 +133,5 @@ def api_stats():
 def block_ip(ip):
     stats.threats_blocked += 1
     stats.alerts.append({"time":"Just
+def init_app(app):
+    app.register_blueprint(bp, url_prefix='/network')
