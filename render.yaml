@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: security-toolkit-pro
+    runtime: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --worker-class eventlet -w 1 app.main:app"
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+    autoDeploy: true
